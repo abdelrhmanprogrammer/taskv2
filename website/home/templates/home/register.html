@@ -1,0 +1,19 @@
+{% extends 'home/base.html'%}
+{% block title%}
+Register
+{%endblock%}
+{% block content%}
+            <div class="form" >
+          <form class="login-form" method="POST">{%csrf_token%}
+              
+            <input type="text" placeholder="username" name="Rusername"/>
+            <input type="password" placeholder="your password please" name="Rpassword1" />
+            <input type="password" placeholder=" confirm your password" name="Rpassword2"/>
+            <input type="email" placeholder="your email please" name="Remail" />
+            <button type="submit">sign up</button>
+          </form>
+          <p class="message text-primary"> <a href='{%url "home:logs"%}'> Login</a> </p>
+          <p class="message text-danger"> {{error}} </p>
+          <p class="message text-danger"> {{passworderror}} </p>
+        </div>
+{%endblock%}

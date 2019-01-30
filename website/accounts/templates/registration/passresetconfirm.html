@@ -1,0 +1,18 @@
+<!-- templates/registration/password_reset_confirm.html -->
+{%extends 'home/base.html'%}
+
+{% block title %}Enter new password{% endblock %}
+
+{% block content %}
+<div class="container-fluid ">
+  <div class="form">
+<div class="row-fluid h1">Set a new password!</div>
+<hr>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input  class="btn "type="submit" value="Change my password">
+</form>
+</div>
+</div>
+{% endblock %}

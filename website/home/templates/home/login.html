@@ -1,0 +1,27 @@
+{% extends 'home/base.html'%}
+{% block title%}
+Login
+{%endblock%}
+{% block content%}
+<div class="form" >
+        <form class="login-form" method="POST">{%csrf_token%}
+          <input type="text" placeholder="username" name="Lusername"/>
+          <input type="password" placeholder="password" name="Lpassword"/>
+          <button type="submit">login</button>
+          
+          
+          {%if passworderror%}
+          <p class="message text-danger"> {{passworderror}} <a href="{% url 'password_reset'%}"> reset password </a> </p>
+          {%elif error%}
+          <p class="message text-danger"> {{error}} <a href="{%url 'home:regs'%}">Create an account</a> </p>
+          {%else%}
+          <p class="message">Not registered? <a href="{%url 'home:regs'%}">Create an account</a></p>
+          <hr>
+          <p class="text-center massege ">or</p>
+          <hr>
+          <p class="message text-danger"> reset <a href="{% url 'password_reset'%}"> your password</a> </p>
+          {%endif%}
+        </form>
+        
+    </div>
+{%endblock%}

@@ -1,0 +1,76 @@
+{%extends 'home/base2.html'%}
+{%block content%}
+ <!-- Page Content -->
+ <div class="container">
+   {%if user.authenticated%}
+    <script>
+    c=  prompt('logged in')
+     </script>
+   {%endif%}
+        <div class="row">
+   <!-- Search Widget -->
+              <div class="card my-4">
+                  <h5 class="card-header">Search</h5>
+                  <div class="card-body">
+                    
+                    <div class="input-group">
+                        <form method="GET">
+                      <input type="text" class="form-control" placeholder=" search ..." name="q">
+                      <span class="input-group-btn">
+      
+                        <button class="btn btn-secondary" type="submit" >Go!</button>
+                      </form>                
+                      </span>
+                    </div>
+                
+               
+              
+              </div>
+            </div>
+      
+          <!-- Blog Entries Column -->
+          <div class="col-md-8">
+  
+            <h1 class="my-4">Welcome to 
+              <small>task website</small>
+            </h1>
+  
+            
+            <!-- post form-->
+            <div class="card mb-4">
+            <form method="POST" enctype="multipart/form-data"> {%csrf_token%}
+              <div class="cart-body">
+                  <textarea class="form-control" rows="5" id="comment" placeholder="Write Comment , Upload file ... " name="comment"></textarea>
+                  <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="customFile" name="dbfile">
+                      <label class="custom-file-label" for="customFile">Upload Image</label>
+                    </div>
+                    
+                  <button type="submit" class="btn btn-danger ">Post</button>
+              </div>
+            </form>
+            </div>
+            <!-- Blog Post -->
+            {%for post in posts%}
+            <div class="card mb-4">
+                    {%if post.img %}
+                    <img class="card-img-top" src="{{post.img.url}}" alt="Card image cap">
+                    {%endif%}
+                    
+                    <div class="card-body">
+                      <h2 class="card-title"> {{post.title}}</h2>
+                      <p class="card-text" id="updatad" >{{post.describtion}}</p>
+                      <hr>
+                    </div>
+           
+                    <div class="card-footer text-muted">
+                        Posted on {{post.timestamp}}
+                    </div>
+                  </div>
+            {%endfor%}
+           
+  
+            
+  
+          </div>
+{%endblock%}

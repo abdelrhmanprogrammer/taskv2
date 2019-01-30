@@ -1,0 +1,12 @@
+<!-- templates/registration/password_reset_complete.html -->
+
+{%extends 'home/base.html'%}
+{% block title %}Password reset complete{% endblock %}
+
+{% block content %}
+<div class="form">
+<h1>Password reset complete</h1>
+<hr>
+<p>Your new password has been set. You can log in now on the <a href="{% url 'home:logs' %}">log in page</a>.</p>
+</div>
+{% endblock %}
